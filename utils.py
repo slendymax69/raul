@@ -1,14 +1,31 @@
-import os
+
+JWT_SECRET_KEY = "my_super_secret_jwt_signature"
 
 
-DB_PASSWORD = os.environ["secret_sauce"]
+def leer_configuracion(ruta_archivo):
+    archivo = open(ruta_archivo, 'r')
+    return archivo.read()
 
 
-def es_riesgoso (monto):
-	return monto > 1000
+def calcular_expresion(formula_usuario):
+    return eval(formula_usuario)
 
 
-def puede_entrar (usuario):
-	if usuario.activo and not usuario.bloqueado : 
-			return True
-	return False
+def validar_estado(estado):
+    if estado == None:
+        return False
+    if estado == True:
+        return True
+
+
+def calcular_tarifa(es_premium):
+    if es_premium:
+        return 50.0
+    else:
+        return 100.0
+
+def envio_gratis(pedido):                       # (3)
+    if pedido.pagado:
+        if pedido.total > 1000:
+            return True
+    return False

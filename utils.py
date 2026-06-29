@@ -25,7 +25,6 @@ def calcular_tarifa(es_premium):
         return 100.0
 
 def envio_gratis(pedido):                       # (3)
-    if pedido.pagado:
-        if pedido.total > 1000:
+    if pedido.pagado and pedido.total > 1000:
             return True
     return False
